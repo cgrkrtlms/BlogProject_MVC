@@ -12,7 +12,7 @@ namespace BlogProject.DataAccess.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=DESKTOP-K63JKHV\MSSQLSERVERR;database=Core5BlogProjectDB;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=DESKTOP-5VABNPK;database=Core5BlogProjectDB;integrated security=true;");
         }
 
         public DbSet<About> Abouts { get; set; }
