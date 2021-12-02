@@ -12,16 +12,32 @@ namespace BlogProject.DataAccess.Repositories
     public class CategoryRepository : ICategoryDAL
     {
         ProjectContext context = new ProjectContext();
+
+        public void Add(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddCategory(Category category)
         {
             context.Add(category);
             context.SaveChanges();
         }
 
+        public void Delete(Category entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteCategory(Category category)
         {
             context.Remove(category);
             context.SaveChanges();
+        }
+
+        public List<Category> GetAll()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Category> GetAllCategory()
@@ -32,6 +48,11 @@ namespace BlogProject.DataAccess.Repositories
         public Category GetById(int id)
         {
             return context.Categories.Find(id);
+        }
+
+        public void Update(Category entity)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateCategory(Category category)

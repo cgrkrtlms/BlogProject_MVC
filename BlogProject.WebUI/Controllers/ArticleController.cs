@@ -7,13 +7,13 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlogProject.WebUI.Controllers
-{ 
-    public class CategoryController : Controller
+{
+    public class ArticleController : Controller
     {
-        CategoryManager categoryManager = new CategoryManager(new EFCategoryRepository());
+        ArticleManager articleManager = new ArticleManager(new EFArticleRepository());
         public IActionResult Index()
         {
-            var values = categoryManager.GetAll();
+            var values = articleManager.GetAll();
             return View(values);
         }
     }

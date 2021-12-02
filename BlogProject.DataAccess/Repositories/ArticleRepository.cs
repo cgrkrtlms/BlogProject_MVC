@@ -11,6 +11,10 @@ namespace BlogProject.DataAccess.Repositories
 {
     public class ArticleRepository : IArticleDAL
     {
+        public void Add(Article entity)
+        {
+            throw new NotImplementedException();
+        }
 
         public void AddCategory(Article article)
         {
@@ -18,11 +22,22 @@ namespace BlogProject.DataAccess.Repositories
             context.Add(article);
             context.SaveChanges();
         }
+
+        public void Delete(Article entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteCategory(Article article)
         {
             using var context = new ProjectContext();
             context.Remove(article);
             context.SaveChanges();
+        }
+
+        public List<Article> GetAll()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Article> GetAllCategory()
@@ -35,6 +50,11 @@ namespace BlogProject.DataAccess.Repositories
         {
             using var context = new ProjectContext();
             return context.Articles.Find(id);
+        }
+
+        public void Update(Article entity)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateCategory(Article article)
