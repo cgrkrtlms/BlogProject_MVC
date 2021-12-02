@@ -33,6 +33,11 @@ namespace BlogProject.Business.Concrete
             return _articleDAL.GetAll();
         }
 
+        public List<Article> GetArticleListWithCategory()
+        {
+            return _articleDAL.GetListWithCategory();
+        }
+
         public Article GetById(int id)
         {
             throw new NotImplementedException();

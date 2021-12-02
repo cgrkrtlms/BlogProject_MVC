@@ -15,5 +15,7 @@ namespace BlogProject.Business.Abstract
         List<Article> GetAll();
 
         Article GetById(int id);
+
+        List<Article> GetArticleListWithCategory();
     }
 }

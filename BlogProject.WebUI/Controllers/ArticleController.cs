@@ -13,7 +13,7 @@ namespace BlogProject.WebUI.Controllers
         ArticleManager articleManager = new ArticleManager(new EFArticleRepository());
         public IActionResult Index()
         {
-            var values = articleManager.GetAll();
+            var values = articleManager.GetArticleListWithCategory();
             return View(values);
         }
     }
