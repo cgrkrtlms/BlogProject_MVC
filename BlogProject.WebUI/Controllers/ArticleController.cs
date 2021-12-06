@@ -16,5 +16,12 @@ namespace BlogProject.WebUI.Controllers
             var values = articleManager.GetArticleListWithCategory();
             return View(values);
         }
+
+        public IActionResult ArticleDetails(int id)
+        {
+            ViewBag.i = id;
+            var value = articleManager.GetArticleByID(id);
+            return View(value);
+        }
     }
 }

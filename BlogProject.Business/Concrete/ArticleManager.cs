@@ -38,6 +38,10 @@ namespace BlogProject.Business.Concrete
             return _articleDAL.GetListWithCategory();
         }
 
+        public List<Article> GetArticleByID(int id)
+        {
+            return _articleDAL.GetAll(x=>x.ID==id);
+        }
         public Article GetById(int id)
         {
             throw new NotImplementedException();
