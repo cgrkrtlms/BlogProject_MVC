@@ -1,6 +1,8 @@
 ﻿using BlogProject.Business.Concrete;
+using BlogProject.Business.Validation;
 using BlogProject.DataAccess.EntityFramework;
 using BlogProject.Entity.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,10 +23,24 @@ namespace BlogProject.WebUI.Controllers
         [HttpPost]
         public IActionResult Index(Writer writer)
         {
-            writer.Status = true;
-            writer.About = "deneme text";
-            writerManager.AddWriter(writer);
-            return RedirectToAction("Index","Article");
+            WriterValidator wv = new  WriterValidator();
+            ValidationResult results = wv.Validate(writer);
+            if (results.IsValid)
+            {
+                writer.Status = true;
+                writer.About = "deneme text";
+                writerManager.AddWriter(writer);
+                return RedirectToAction("Index", "Article");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName,item.ErrorMessage);
+                }
+            }
+            return View();
+       
         }
     }
 }

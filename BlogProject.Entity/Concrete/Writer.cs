@@ -21,9 +21,11 @@ namespace BlogProject.Entity.Concrete
         public string Email { get; set; }
 
         public string Password { get; set; }
+        public string PasswordConfirm { get; set; }
 
         public bool Status { get; set; }
 
+        public List<Article> Articles { get; set; }
 
     }
 }

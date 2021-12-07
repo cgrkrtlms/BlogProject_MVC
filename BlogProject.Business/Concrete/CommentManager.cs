@@ -19,7 +19,7 @@ namespace BlogProject.Business.Concrete
 
         public void AddComment(Comment comment)
         {
-            throw new NotImplementedException();
+            _commentDAL.Add(comment);
         }
 
         public List<Comment> GetAll(int id)

@@ -1,5 +1,6 @@
 ﻿using BlogProject.Business.Concrete;
 using BlogProject.DataAccess.EntityFramework;
+using BlogProject.Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,15 @@ namespace BlogProject.WebUI.Controllers
         {
             return PartialView();
         }
-
+        [HttpPost]
+        public PartialViewResult PartialAddComment(Comment comment)
+        {
+            comment.CommentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            comment.Status = true;
+            comment.ArticleID = 3;
+            commentManager.AddComment(comment);
+            return PartialView(comment);
+        }
         public PartialViewResult CommentListByArticle(int id)
         {
            var value = commentManager.GetAll(id);

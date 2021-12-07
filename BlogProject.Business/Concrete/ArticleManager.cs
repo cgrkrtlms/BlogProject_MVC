@@ -51,5 +51,10 @@ namespace BlogProject.Business.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public List<Article> GetArticleListByWriter(int id)
+        {
+            return _articleDAL.GetAll(x=>x.WriterID==id);
+        }
     }
 }
