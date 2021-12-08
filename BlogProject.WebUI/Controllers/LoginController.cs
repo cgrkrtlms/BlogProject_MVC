@@ -25,7 +25,7 @@ namespace BlogProject.WebUI.Controllers
             if (data!=null)
             {
                 HttpContext.Session.SetString("username", writer.Email);
-                return RedirectToAction("Index","Writer");
+                return RedirectToAction("Index","Writer"); 
             }
             return View();
         }
