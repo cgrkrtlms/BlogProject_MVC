@@ -20,5 +20,13 @@ namespace BlogProject.DataAccess.EntityFramework
                 return context.Articles.Include(x => x.Category).ToList();
             }
         }
+
+        public List<Article> GetListWithCategoryByWriter(int id)
+        {
+            using (var context = new ProjectContext())
+            {
+                return context.Articles.Include(x => x.Category).Where(x=>x.WriterID==id).ToList();
+            }
+        }
     }
 }

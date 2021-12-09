@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace BlogProject.Business.Abstract
 {
-   public interface IAboutService
+   public interface IAboutService:IGenericService<About>
     {
-        List<About> GetAll();
+
     }
 }

@@ -7,15 +7,8 @@ using System.Threading.Tasks;
 
 namespace BlogProject.Business.Abstract
 {
-   public interface IArticleService
+   public interface IArticleService:IGenericService<Article>
     {
-        void AddArticle(Article article);
-        void DeleteArticle(Article article);
-        void UpdateArticle(Article article);
-        List<Article> GetAll();
-
-        Article GetById(int id);
-
         List<Article> GetArticleListWithCategory();
 
         List<Article> GetArticleListByWriter(int id);

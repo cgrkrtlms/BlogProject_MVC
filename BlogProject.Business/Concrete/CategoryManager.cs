@@ -18,19 +18,9 @@ namespace BlogProject.Business.Concrete
             _categoryDAL = categoryDAL;
         }
 
-        public void AddCategory(Category category)
-        {
-            _categoryDAL.Add(category);
-        }
-
-        public void DeleteCategory(Category category)
-        {
-            _categoryDAL.Delete(category);
-        }
-
         public List<Category> GetAll()
         {
-           return _categoryDAL.GetAll().ToList();
+            return _categoryDAL.GetAll();
         }
 
         public Category GetById(int id)
@@ -38,9 +28,19 @@ namespace BlogProject.Business.Concrete
             return _categoryDAL.GetById(id);
         }
 
-        public void UpdateCategory(Category category)
+        public void TAdd(Category entity)
         {
-            _categoryDAL.Update(category);
+            _categoryDAL.Add(entity);
+        }
+
+        public void TDelete(Category entity)
+        {
+            _categoryDAL.Delete(entity);
+        }
+
+        public void TUpdate(Category entity)
+        {
+            _categoryDAL.Update(entity);
         }
     }
 }

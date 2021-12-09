@@ -10,5 +10,6 @@ namespace BlogProject.DataAccess.Abstract
    public interface IArticleDAL:IGenericDAL<Article>
     {
         List<Article> GetListWithCategory();
+        List<Article> GetListWithCategoryByWriter(int id);
     }
 }

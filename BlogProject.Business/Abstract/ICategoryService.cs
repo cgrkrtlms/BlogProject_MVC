@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace BlogProject.Business.Abstract
 {
-   public interface ICategoryService
+   public interface ICategoryService:IGenericService<Category>
     {
-        void AddCategory(Category category);
-        void DeleteCategory(Category category);
-        void UpdateCategory(Category category);
-        List<Category> GetAll();
 
-        Category GetById(int id);
     }
 }

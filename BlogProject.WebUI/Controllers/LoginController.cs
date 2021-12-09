@@ -1,33 +1,55 @@
 ﻿using BlogProject.DataAccess.Concrete;
 using BlogProject.Entity.Concrete;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace BlogProject.WebUI.Controllers
 {
     public class LoginController : Controller
     {
-        [AllowAnonymous]
+        [AllowAnonymous] 
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Index(Writer writer)
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Index(Writer writer)
         {
             ProjectContext context = new ProjectContext();
-            var data = context.Writers.FirstOrDefault(x=>x.Email==writer.Email && x.Password==writer.Password);
+            var data = context.Writers.FirstOrDefault(x => x.Email == writer.Email && x.Password == writer.Password);
             if (data!=null)
             {
-                HttpContext.Session.SetString("username", writer.Email);
-                return RedirectToAction("Index","Writer"); 
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,writer.Email)
+                };
+                var useridentity = new ClaimsIdentity(claims, "a");
+                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
+                await HttpContext.SignInAsync(principal);
+                return RedirectToAction("Index", "Writer");
             }
-            return View();
+
+            else
+            {
+                return View();
+            }
         }
     }
 }
+
+//ProjectContext context = new ProjectContext();
+//var data = context.Writers.FirstOrDefault(x => x.Email == writer.Email && x.Password == writer.Password);
+//if (data != null)
+//{
+//    HttpContext.Session.SetString("username", writer.Email);
+//    return RedirectToAction("Index", "Writer");
+//}
+//return View();

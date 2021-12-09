@@ -1,0 +1,43 @@
+﻿@using BlogProject.Entity.Concrete
+@model List<Article>
+
+@{
+    ViewData["Title"] = "ArticleListByWriter";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Yazarın Blogları</h1>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th style=" font-size: 15px;">Blog Başlığı</th>
+        <th style=" font-size: 15px;">Oluşturma Tarihi</th>
+        <th style=" font-size: 15px;">Kategori</th>
+        <th style=" font-size: 15px;">Durum</th>
+        <th style=" font-size: 15px;">Düzenle</th>
+        <th style=" font-size: 15px;">Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr >
+    <th>@item.ID</th>
+    <td style=" font-size: 15px;">@item.Title</td>
+    <td style=" font-size: 15px;">@item.CreateDate.ToShortDateString()</td>
+    <td style=" font-size: 15px;">@item.Category.Name</td>
+    @if (item.Status == true)
+    {
+        <td><span class="badge badge-success">Aktif</span></td>
+    }
+    else
+    {
+        <td><span class="badge badge-danger">Pasif</span></td>
+    }
+    <td>@item.Status</td>
+    <td><a href="#" class="btn btn-primary">Düzenle</a></td>
+    <td><a href="/Article/ArticleDelete/@item.ID" class="btn btn-youtube">Sil</a></td>
+</tr>
+    }
+</table>
+
+<a href="#" class="btn btn-facebook">Yeni Blog Yaz</a>

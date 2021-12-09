@@ -18,43 +18,52 @@ namespace BlogProject.Business.Concrete
             _articleDAL = articleDAL;
         }
 
-        public void AddArticle(Article article)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteArticle(Article article)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Article> GetAll()
         {
             return _articleDAL.GetAll();
         }
 
+        public List<Article> GetLast3Article() 
+        {
+            return _articleDAL.GetAll().Take(3).ToList();
+        }
         public List<Article> GetArticleListWithCategory()
         {
             return _articleDAL.GetListWithCategory();
         }
-
+        public List<Article> GetListWithCategoryByWriterArticleManager(int id)
+        {
+            return _articleDAL.GetListWithCategoryByWriter(id);
+        }
         public List<Article> GetArticleByID(int id)
         {
             return _articleDAL.GetAll(x=>x.ID==id);
         }
         public Article GetById(int id)
         {
-            throw new NotImplementedException();
+            return _articleDAL.GetById(id);
         }
 
-        public void UpdateArticle(Article article)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<Article> GetArticleListByWriter(int id)
         {
             return _articleDAL.GetAll(x=>x.WriterID==id);
+        }
+
+        public void TAdd(Article entity)
+        {
+            _articleDAL.Add(entity);
+        }
+
+        public void TDelete(Article entity)
+        {
+            _articleDAL.Delete(entity);
+        }
+
+        public void TUpdate(Article entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }
