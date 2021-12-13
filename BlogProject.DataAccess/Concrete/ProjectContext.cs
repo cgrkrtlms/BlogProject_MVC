@@ -22,5 +22,6 @@ namespace BlogProject.DataAccess.Concrete
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Writer> Writers { get; set; }
         public DbSet<NewsLetter> NewsLetters { get; set; }
+        public DbSet<ArticleRayting> ArticleRaytings { get; set; }
     }
 }

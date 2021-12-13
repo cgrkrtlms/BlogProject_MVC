@@ -1,0 +1,30 @@
+﻿@model BlogProject.Entity.Concrete.Article
+@{
+    ViewData["Title"] = "ArticleUpdate";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+@using (Html.BeginForm("ArticleUpdate", "Article", FormMethod.Post))
+{
+    @Html.Label("Article ID")
+    @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
+    @Html.Label("Writer ID")
+    @*@Html.TextBoxFor(x => x.WriterID, new { @class = "form-control" })
+    @Html.Label("Başlık")*@
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    @Html.Label("Küçük Görsel Url")
+    @Html.TextBoxFor(x => x.ThumbnailImage, new { @class = "form-control" })
+    @Html.Label("Görsel Url")
+    @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+    @Html.Label("Oluşturulma Tarihi")
+    @Html.TextBoxFor(x => x.CreateDate, new { @class = "form-control" })
+    @Html.Label("İçerik")
+    @Html.TextAreaFor(x => x.Content, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Güncelle</button>
+
+
+}
+

@@ -11,5 +11,6 @@ namespace BlogProject.DataAccess.Abstract
     {
         List<Article> GetListWithCategory();
         List<Article> GetListWithCategoryByWriter(int id);
+        List<Article> GetListWithWriter(int id);
     }
 }

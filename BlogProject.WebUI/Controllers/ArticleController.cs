@@ -17,6 +17,8 @@ namespace BlogProject.WebUI.Controllers
     public class ArticleController : Controller
     {
         ArticleManager articleManager = new ArticleManager(new EFArticleRepository());
+
+        CategoryManager cm = new CategoryManager(new EFCategoryRepository());
         public IActionResult Index()
         {
             var values = articleManager.GetArticleListWithCategory();
@@ -37,7 +39,6 @@ namespace BlogProject.WebUI.Controllers
 
         public IActionResult AddArticle()
         {
-            CategoryManager cm = new CategoryManager(new EFCategoryRepository());
             List<SelectListItem> categoryValues = (from x in cm.GetAll()
                                                    select new SelectListItem
                                                    {
@@ -74,6 +75,30 @@ namespace BlogProject.WebUI.Controllers
         {
             var blogValue = articleManager.GetById(id);
             articleManager.TDelete(blogValue);
+            return RedirectToAction("ArticleListByWriter");
+        }
+        public IActionResult ArticleUpdate(int id)
+        {
+            var article = articleManager.GetById(id);
+            List<SelectListItem> categoryValues = (from x in cm.GetAll()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.ID.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryValues;
+            return View(article);
+        }
+        [HttpPost]
+        public IActionResult ArticleUpdate(Article article)
+        {
+            //var blogValue = articleManager.GetById(article.ID);
+            //article.CreateDate = DateTime.Parse(blogValue.CreateDate.ToShortDateString());
+            //ViewBag.createDate = article.CreateDate;
+            article.WriterID = 3;
+            article.Status = true;
+
+            articleManager.TUpdate(article);
             return RedirectToAction("ArticleListByWriter");
         }
 

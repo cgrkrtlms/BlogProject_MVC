@@ -20,24 +20,44 @@
     </tr>
     @foreach (var item in Model)
     {
-<tr >
-    <th>@item.ID</th>
-    <td style=" font-size: 15px;">@item.Title</td>
-    <td style=" font-size: 15px;">@item.CreateDate.ToShortDateString()</td>
-    <td style=" font-size: 15px;">@item.Category.Name</td>
-    @if (item.Status == true)
-    {
-        <td><span class="badge badge-success">Aktif</span></td>
-    }
-    else
-    {
-        <td><span class="badge badge-danger">Pasif</span></td>
-    }
-    <td>@item.Status</td>
-    <td><a href="#" class="btn btn-primary">Düzenle</a></td>
-    <td><a href="/Article/ArticleDelete/@item.ID" class="btn btn-youtube">Sil</a></td>
-</tr>
+        <tr>
+            <th>@item.ID</th>
+            <td style=" font-size: 15px;">@item.Title</td>
+            <td style=" font-size: 15px;">@item.CreateDate.ToShortDateString()</td>
+            <td style=" font-size: 15px;">@item.Category.Name</td>
+            @if (item.Status == true)
+            {
+                <td><span class="badge badge-gradient-success">Aktif</span></td>
+            }
+            else
+            {
+                <td><span class="badge badge-gradient-danger">Pasif</span></td>
+            }
+            <td>@item.Status</td>
+            <td><a href="/Article/ArticleUpdate/@item.ID" class="btn-sm btn-primary">Düzenle</a></td>
+            @*<td><a data-toggle="modal" data-target="#myModal" href="/Article/ArticleDelete/@item.ID" class="btn btn-youtube">Sil</a></td>*@
+            <td>@Html.ActionLink("Sil", "ArticleDelete", new { id = item.ID }, new { @class = "btn-sm btn-youtube", onclick = "return confirm('Silmek istediğinize emin misiniz?')" })</td>
+        </tr>
     }
 </table>
-
-<a href="#" class="btn btn-facebook">Yeni Blog Yaz</a>
+<br />
+<a href="/Article/AddArticle" class="btn btn-facebook">Yeni Blog Oluştur</a>
+@*<div class="modal" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Onay</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Silmek istediğinizden emin misiniz?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Sil</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+            </div>
+        </div>
+    </div>
+</div>*@

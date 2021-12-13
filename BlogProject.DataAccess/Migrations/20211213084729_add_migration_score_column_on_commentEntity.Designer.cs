@@ -4,14 +4,16 @@ using BlogProject.DataAccess.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BlogProject.DataAccess.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20211213084729_add_migration_score_column_on_commentEntity")]
+    partial class add_migration_score_column_on_commentEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,27 +89,6 @@ namespace BlogProject.DataAccess.Migrations
                     b.HasIndex("WriterID");
 
                     b.ToTable("Articles");
-                });
-
-            modelBuilder.Entity("BlogProject.Entity.Concrete.ArticleRayting", b =>
-                {
-                    b.Property<int>("ArticleRaytingID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ArticleID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ArticleRaytingCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ArticleTotalScore")
-                        .HasColumnType("int");
-
-                    b.HasKey("ArticleRaytingID");
-
-                    b.ToTable("ArticleRaytings");
                 });
 
             modelBuilder.Entity("BlogProject.Entity.Concrete.Category", b =>

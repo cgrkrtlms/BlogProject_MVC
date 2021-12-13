@@ -12,5 +12,6 @@ namespace BlogProject.Business.Abstract
         List<Article> GetArticleListWithCategory();
 
         List<Article> GetArticleListByWriter(int id);
+        List<Article> GetArticleListWithWriter(int id);
     }
 }

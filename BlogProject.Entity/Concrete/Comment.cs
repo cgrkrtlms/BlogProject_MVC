@@ -20,6 +20,7 @@ namespace BlogProject.Entity.Concrete
 
         public DateTime CommentDate { get; set; }
 
+        public int ArticleScore { get; set; }
         public bool Status { get; set; }
 
 

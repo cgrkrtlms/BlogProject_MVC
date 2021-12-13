@@ -63,7 +63,12 @@ namespace BlogProject.Business.Concrete
 
         public void TUpdate(Article entity)
         {
-            throw new NotImplementedException();
+            _articleDAL.Update(entity);
+        }
+
+        public List<Article> GetArticleListWithWriter(int id)
+        {
+            return _articleDAL.GetListWithWriter(id);
         }
     }
 }
