@@ -21,7 +21,7 @@ namespace BlogProject.Business.Concrete
            return _aboutDAL.GetAll();
         }
 
-        public About GetById(int id)
+        public About TGetById(int id)
         {
             throw new NotImplementedException();
         }

@@ -13,6 +13,6 @@ namespace BlogProject.Business.Abstract
         void TUpdate (T entity);
         List<T> GetAll();
 
-        T GetById(int id);
+        T TGetById(int id);
     }
 }

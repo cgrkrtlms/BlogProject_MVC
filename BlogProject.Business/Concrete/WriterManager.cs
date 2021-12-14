@@ -17,10 +17,34 @@ namespace BlogProject.Business.Concrete
             _writerDAL = writerDAL;
         }
 
-        public void AddWriter(Writer writer)
+        public List<Writer> GetAll()
         {
-            _writerDAL.Add(writer);
+            throw new NotImplementedException();
         }
 
+        public Writer TGetById(int id)
+        {
+           return  _writerDAL.GetById(id);
+        }
+
+        public List<Writer> GetWriterById(int id)
+        {
+            return _writerDAL.GetAll(x=>x.ID==id);
+        }
+
+        public void TAdd(Writer entity)
+        {
+            _writerDAL.Add(entity);
+        }
+
+        public void TDelete(Writer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TUpdate(Writer entity)
+        {
+            _writerDAL.Update(entity);
+        }
     }
 }

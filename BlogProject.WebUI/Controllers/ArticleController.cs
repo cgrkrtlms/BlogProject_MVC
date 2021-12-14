@@ -73,13 +73,13 @@ namespace BlogProject.WebUI.Controllers
 
         public IActionResult ArticleDelete(int id)
         {
-            var blogValue = articleManager.GetById(id);
+            var blogValue = articleManager.TGetById(id);
             articleManager.TDelete(blogValue);
             return RedirectToAction("ArticleListByWriter");
         }
         public IActionResult ArticleUpdate(int id)
         {
-            var article = articleManager.GetById(id);
+            var article = articleManager.TGetById(id);
             List<SelectListItem> categoryValues = (from x in cm.GetAll()
                                                    select new SelectListItem
                                                    {

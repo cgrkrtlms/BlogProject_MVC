@@ -40,7 +40,7 @@ namespace BlogProject.Business.Concrete
         {
             return _articleDAL.GetAll(x=>x.ID==id);
         }
-        public Article GetById(int id)
+        public Article TGetById(int id)
         {
             return _articleDAL.GetById(id);
         }

@@ -29,7 +29,7 @@ namespace BlogProject.WebUI.Controllers
             {
                 writer.Status = true;
                 writer.About = "deneme text";
-                writerManager.AddWriter(writer);
+                writerManager.TAdd(writer);
                 return RedirectToAction("Index", "Article");
             }
             else
