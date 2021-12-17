@@ -1,0 +1,27 @@
+﻿@model BlogProject.Entity.Concrete.Message2
+
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Mesaj Detay</h1>
+<br />
+@Html.Label("Mesaj ID")
+@Html.TextBoxFor(x => x.ID, new { @class = "form-control", id = "someId", disabled = "disabled" })
+<br />
+@Html.Label("Başlık")
+@Html.TextBoxFor(x => x.Subject, new { @class = "form-control", id = "someId", disabled = "disabled" })
+<br />
+@Html.Label("İçerik")
+@Html.TextAreaFor(x => x.MessageDetails, 25, 3, new { @class = "form-control", id = "someId" ,disabled="disabled"})
+<br />
+<button class="btn btn-success">Mesajlara Dön</button>
+<script>
+    $('#someId').on('keyUp', function () {
+        var text = $('#someId').val();
+        if (text.length > 0)
+            $('#someId').attr('disabled', 'disabled');
+    });
+</script>
+

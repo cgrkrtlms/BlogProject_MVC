@@ -1,19 +1,17 @@
 ﻿@model BlogProject.Entity.Concrete.Writer
 @{
-    ViewData["Title"] = "WriterEditProfile";
+    ViewData["Title"] = "WriterAdd";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-@using (Html.BeginForm("WriterEditProfile", "Writer", FormMethod.Post))
-{
-
+<form class="form-group" method="post" enctype="multipart/form-data">
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Yazar Profil Bilgileri</h4>
                 <br />
                 @Html.HiddenFor(x => x.ID, new { @class = "form-control" })
-                <form method="post" action="WriterEditProfile" class="forms-sample">
+                <div method="post" action="WriterEditProfile" class="forms-sample">
                     <div class="form-group">
                         <label for="exampleInputName1">Ad Soyad</label>
                         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
@@ -32,24 +30,18 @@
 
                     <div class="form-group">
                         <label>Profil Fotoğrafı</label>
-                        <input type="file" name="Image" class="file-upload-default">
-                        <div class="input-group col-xs-12">
-                            <input type="text" class="form-control file-upload-info" disabled>
-                            <span class="input-group-append">
-                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Seç</button>
-                            </span>
-                        </div>
+                        <input type="file" name="Image"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleTextarea1">Hakkımda</label>
                         @Html.TextAreaFor(x => x.About, 10, 3, new { @class = "form-control" })
                         @*<textarea name="About" class="form-control" id="exampleTextarea1" rows="4"></textarea>*@
                     </div>
-                    <button type="submit" class="btn btn-gradient-primary mr-2">Güncelle</button>
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
                     <button class="btn btn-light">Vazgeç</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-}
+</form>
 

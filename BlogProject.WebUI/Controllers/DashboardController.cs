@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 
 namespace BlogProject.WebUI.Controllers
 {
+
     public class DashboardController : Controller
     {
         ArticleManager articleManager = new ArticleManager(new EFArticleRepository());
         CategoryManager categoryManager = new CategoryManager(new EFCategoryRepository());
-        [AllowAnonymous]
+
         public IActionResult Index(int id)
         {
             ViewBag.v1 = articleManager.GetAll().Count();
