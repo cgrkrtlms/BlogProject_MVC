@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewData["Title"] = "ArticleTitleListExcel";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>ArticleTitleListExcel</h1>
+<button class="btn btn-primary" onclick="DownloadExcelArticleList()">Excel Listesini İndir</button>
+<script>
+    function DownloadExcelArticleList()
+    {
+        window.open("/Admin/Article/ExportDynamicExcelArticleList");
+    }
+</script>
